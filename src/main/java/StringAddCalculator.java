@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -65,17 +64,13 @@ public class StringAddCalculator {
         return value;
     }
 
-    private void valueVerify(String value) {
+    public void valueVerify(String value) {
         if(value.charAt(0) == '/' && value.charAt(1) == '/') {
             custom_value(value);
         }
         if(value.length() >= 2) {
-            default_value(value);
+            default_value(value, ",|:");
         }
-//        if(value < 0 || value > 65535){
-//            System.out.println("양의 정수만 입력 가능합니다.");
-//            start();
-//        }
     }
 
     private void custom_value(String value) {
@@ -87,8 +82,25 @@ public class StringAddCalculator {
         }
     }
 
-    private void exceptJudge(String[] values) {
+    private void default_value(String value, String delimiter) {
+        String[] values = value.split(delimiter);
+        for(int i=0;i<values.length;i++) {
+            notAllowParameter(Integer.parseInt(values[i]));
+        }
+    }
 
+    private void exceptJudge(String[] values) {
+        for(int i=0;i< values.length;i++){
+            notAllowParameter(Integer.parseInt(values[i]));
+        }
+    }
+
+    private void notAllowParameter(int value) {
+        if(value < 0 || value > 65535){
+            System.out.println("양의 정수만 입력 가능합니다.");
+            System.out.println("시스템을 재시작 해주세요.");
+            System.exit(0);
+        }
     }
 
     public static void main(String[] args) {

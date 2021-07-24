@@ -1,7 +1,5 @@
-import org.junit.jupiter.api.Assertions;
+import com.ginsberg.junit.exit.ExpectSystemExit;
 import org.junit.jupiter.api.Test;
-
-import java.util.NoSuchElementException;
 
 class InputCarTest {
     InputCar inputCar = new InputCar();
@@ -13,10 +11,9 @@ class InputCarTest {
     }
 
     @Test
+    @ExpectSystemExit
     void 길이제한_5글자_실패_예시() {
         String[] names = {"car1","car11111","car3","car4"};
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            inputCar.namesVerify(names);
-        });
+        inputCar.namesVerify(names);
     }
 }

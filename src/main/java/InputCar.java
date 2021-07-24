@@ -36,8 +36,8 @@ public class InputCar {
     public void length_5(String name) {
         if(name.length() > 5){
             System.out.println("자동차 이름은 5글자가 넘지 않도록 입력해주세요.");
-            RacingCar racingCar = new RacingCar();
-            racingCar.racingStart();
+            System.out.println("시스템을 재시작 해주세요.");
+            System.exit(0);
         }
     }
 

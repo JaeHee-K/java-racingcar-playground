@@ -1,10 +1,7 @@
-import org.junit.jupiter.api.Assertions;
+import com.ginsberg.junit.exit.ExpectSystemExit;
 import org.junit.jupiter.api.Test;
 
-import java.util.NoSuchElementException;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringAddCalculatorTest {
     StringAddCalculator stringAddCalculator = new StringAddCalculator();
@@ -56,11 +53,9 @@ class StringAddCalculatorTest {
         assertThat(value).isEqualTo(12);
     }
 
-    @Test()
+    @Test
+    @ExpectSystemExit
     public void 잘못된_입력_검증() throws Exception{
-        stringAddCalculator.calculate("-1,2,3");
-//        Assertions.assertThrows(NoSuchElementException.class, () -> {
-//            stringAddCalculator.calculate("-1,2,3");
-//        });
+        stringAddCalculator.valueVerify("-1,2,3");
     }
 }
